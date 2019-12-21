@@ -13,6 +13,7 @@ gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'pry-rails'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
