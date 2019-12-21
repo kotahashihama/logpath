@@ -1,0 +1,5 @@
+.done-new
+  = form_with model: @done, url: dones_path, local: true do |f|
+    = f.label :content, '内容'
+    = f.text_field :content
+    = f.submit '投稿'
