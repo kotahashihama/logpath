@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: logpath_production
-  username: logpath
-  password: <%= ENV['LOGPATH_DATABASE_PASSWORD'] %>
+  username: root
+  password:
