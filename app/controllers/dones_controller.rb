@@ -14,6 +14,13 @@ class DonesController < ApplicationController
     redirect_to @done
   end
 
+  def destroy
+    @done = Done.find(params[:id])
+    @done.destroy
+
+    redirect_to dones_path
+  end
+
   def show
     @done = Done.find(params[:id])
   end
