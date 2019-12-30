@@ -1,4 +1,4 @@
-const config = {
+export default {
   mode: "spa",
   /*
    ** Headers of the page
@@ -47,7 +47,18 @@ const config = {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/api/v1/': {
+      // backendのコンテナip
+      target: 'http://localhost:3000',
+      pathRewrite: {
+        '^/api/v1/': '/api/v1/'
+      },
+    }
+  },
   /*
    ** Build configuration
    */
@@ -61,10 +72,4 @@ const config = {
   generate: {
     dir: "../public"
   }
-};
-
-if (process.env.NODE_ENV === "development") {
-  config.proxy = { "/api": "http://localhost:3000" };
 }
-
-export default config;
