@@ -5,13 +5,19 @@ class Api::V1::DonesController < ApplicationController
   end
 
   def create
-    @done = Done.new(content: params[:content])
-    @done.save
+    @done = Done.create(content: params[:content])
+    render 'show', formats: :json, handlers: 'jbuilder', layout: false
+  end
+
+  def update
+    @done = Done.find(params[:id])
+    @done.update_attributes(content: params[:content])
     render 'show', formats: :json, handlers: 'jbuilder', layout: false
   end
 
   def destroy
     @done = Done.find(params[:id])
     @done.destroy
+    render 'show', formats: :json, handlers: 'jbuilder', layout: false
   end
 end
