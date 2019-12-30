@@ -1,10 +1,8 @@
-<template>
-  <div>
-    <button @click="showMsg">
-      Hello
-    </button>
-    {{ msg }}
-  </div>
+<template lang="pug">
+  .wrapper
+    button(@click="showMsg")
+      | Hello
+    | {{ msg }}aaba
 </template>
 
 <script>

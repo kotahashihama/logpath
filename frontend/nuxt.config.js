@@ -23,7 +23,9 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    { src: '@/assets/stylus/snippets.styl', lang: 'stylus' }
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -41,7 +43,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
-    "@nuxtjs/proxy"
+    "@nuxtjs/proxy",
+    "@nuxtjs/style-resources"
   ],
   /*
    ** Axios module configuration
