@@ -1,8 +1,7 @@
-<template>
-  <div>
-    <TheHeader />
-    <nuxt />
-  </div>
+<template lang="pug">
+div
+  TheHeader
+  nuxt
 </template>
 
 <script>

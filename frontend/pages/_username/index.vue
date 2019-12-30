@@ -1,10 +1,16 @@
 <template lang="pug">
-  .wrapper
-    | {{ username }}
+.wrapper
+  | {{ username }}
 </template>
 
 <script>
 export default {
+  head () {
+    return {
+      title: this.username
+    }
+  },
+
   data: () => ({
     username: ''
   }),
