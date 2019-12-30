@@ -1,7 +1,6 @@
 class Api::V1::DonesController < ApplicationController
   def index
-    render json: {
-      msg: 'done'
-    }
+    @dones = Done.all
+    render 'index', formats: :json, handlers: 'jbuilder', layout: false
   end
 end

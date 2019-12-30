@@ -1,19 +1,24 @@
 <template lang="pug">
   .wrapper
-    button(@click="showMsg")
-      | Hello
-    | {{ msg }}aaba
+    ul(v-for="(done, index) in dones", :key="index")
+      li {{ done.content }}
 </template>
 
 <script>
 export default {
   data: () => ({
-    msg: ''
+    dones: []
   }),
 
+  mounted () {
+    this.getDones()
+  },
+
   methods: {
-    showMsg () {
-      this.$axios.$get('/api/v1/dones').then(res => (this.msg = res.msg))
+    getDones () {
+      this.$axios.$get('/api/v1/dones').then((res) => {
+        this.dones = res
+      })
     }
   }
 }
