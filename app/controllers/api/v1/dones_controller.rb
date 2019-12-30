@@ -9,4 +9,9 @@ class Api::V1::DonesController < ApplicationController
     @done.save
     render 'show', formats: :json, handlers: 'jbuilder', layout: false
   end
+
+  def destroy
+    @done = Done.find(params[:id])
+    @done.destroy
+  end
 end
