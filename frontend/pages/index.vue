@@ -12,10 +12,18 @@
     li {{ done.content }}
       button(@click="editDone(done)") 編集
       button(@click="destroyDone(done.id)") 削除
+
+  Registration
 </template>
 
 <script>
+import Registration from '@/components/molecules/IndexRegistration'
+
 export default {
+  components: {
+    Registration
+  },
+
   head () {
     return {
       title: 'ホーム'
@@ -54,7 +62,6 @@ export default {
       this.editingDone = done.content
       this.editingDoneId = done.id
     },
-
     updateDone () {
       const params = {
         content: this.editingDone
