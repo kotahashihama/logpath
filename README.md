@@ -1,24 +1,7 @@
-# README
+# Logpath（ログパス）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### バージョン
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Nuxt.js 2.11.0
+- Ruby 2.7.0
+- Ruby on Rails 6.0.2.1
