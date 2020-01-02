@@ -13,12 +13,12 @@ export default {
   },
 
   created () {
-    this.getDones()
+    this.getTasks()
   },
 
   methods: {
-    getDones () {
-      this.$axios.$get('/api/v1/dones').then((res) => {
+    getTasks () {
+      this.$axios.$get('/api/v1/tasks').then((res) => {
         this.$store.commit('login')
       })
     }

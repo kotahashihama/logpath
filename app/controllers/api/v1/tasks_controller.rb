@@ -1,14 +1,14 @@
-class Api::V1::DonesController < ApplicationController
+class Api::V1::TasksController < ApplicationController
   before_action :authenticate_api_v1_user!
 
   def index
     user = User.find(current_api_v1_user.id)
-    @dones = user.dones.all
+    @tasks = user.tasks.all
     render 'index', formats: :json, handlers: 'jbuilder', layout: false
   end
 
   def create
-    @done = Done.create(
+    @task = Task.create(
       content: params[:content],
       user_id: current_api_v1_user.id
     )
@@ -16,14 +16,14 @@ class Api::V1::DonesController < ApplicationController
   end
 
   def update
-    @done = Done.find(params[:id])
-    @done.update_attributes(content: params[:content])
+    @task = Task.find(params[:id])
+    @task.update_attributes(content: params[:content])
     render 'show', formats: :json, handlers: 'jbuilder', layout: false
   end
 
   def destroy
-    @done = Done.find(params[:id])
-    @done.destroy
+    @task = Task.find(params[:id])
+    @task.destroy
     render 'show', formats: :json, handlers: 'jbuilder', layout: false
   end
 end
