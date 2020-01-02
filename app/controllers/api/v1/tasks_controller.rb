@@ -9,7 +9,7 @@ class Api::V1::TasksController < ApplicationController
 
   def create
     @task = Task.create(
-      content: params[:content],
+      content: task_params[:content],
       user_id: current_api_v1_user.id
     )
     render 'show', formats: :json, handlers: 'jbuilder', layout: false
@@ -17,7 +17,7 @@ class Api::V1::TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    @task.update_attributes(content: params[:content])
+    @task.update_attributes(task_params)
     render 'show', formats: :json, handlers: 'jbuilder', layout: false
   end
 
@@ -25,5 +25,11 @@ class Api::V1::TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
     render 'show', formats: :json, handlers: 'jbuilder', layout: false
+  end
+
+  private
+
+  def task_params
+    params.require(:task).permit(:content)
   end
 end
