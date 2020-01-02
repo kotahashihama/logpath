@@ -77,9 +77,13 @@ export default {
       })
     },
     destroyDone (id) {
-      this.$axios.$delete(`/api/v1/dones/${id}`).then((res) => {
-        this.getDones()
-      })
+      const result = confirm('削除してもよろしいですか？')
+
+      if (result) {
+        this.$axios.$delete(`/api/v1/dones/${id}`).then((res) => {
+          this.getDones()
+        })
+      }
     },
 
     logoutUser () {
