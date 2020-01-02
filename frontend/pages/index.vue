@@ -12,8 +12,10 @@
     li {{ done.content }}
       button(@click="editDone(done)") 編集
       button(@click="destroyDone(done.id)") 削除
+  button(@click="getDones") Done一覧を取得
 
   Registration
+  | isLoggedIn: {{ $store.state.isLoggedIn }}
 </template>
 
 <script>

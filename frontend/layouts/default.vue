@@ -10,6 +10,18 @@ import TheHeader from '@/components/TheHeader'
 export default {
   components: {
     TheHeader
+  },
+
+  created () {
+    this.getDones()
+  },
+
+  methods: {
+    getDones () {
+      this.$axios.$get('/api/v1/dones').then((res) => {
+        this.$store.commit('login')
+      })
+    }
   }
 }
 </script>

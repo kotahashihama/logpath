@@ -1,4 +1,6 @@
 class Api::V1::DonesController < ApplicationController
+  before_action :authenticate_api_v1_user!
+
   def index
     @dones = Done.all
     render 'index', formats: :json, handlers: 'jbuilder', layout: false
