@@ -1,21 +1,23 @@
 <template lang="pug">
-.wrapper
-  input(v-model="newDone")
-  button(@click="createDone") 投稿
-  div(v-if="isEditing")
-    input(v-model="editingDone")
-    button(@click="updateDone") 更新
-  p プレビュー
-  | {{ newDone }}
-  p 一覧
-  ul(v-for="(done, index) in dones", :key="index")
-    li {{ done.content }}
-      button(@click="editDone(done)") 編集
-      button(@click="destroyDone(done.id)") 削除
-  button(@click="getDones") Done一覧を取得
+.index(v-if="$store.state.isLoggedIn")
+  .wrapper
+    button(@click="logoutUser") ログアウト
 
-  Registration
-  | isLoggedIn: {{ $store.state.isLoggedIn }}
+    input(v-model="newDone")
+    button(@click="createDone") 投稿
+    div(v-if="isEditing")
+      input(v-model="editingDone")
+      button(@click="updateDone") 更新
+    p プレビュー
+    | {{ newDone }}
+    p 一覧
+    ul(v-for="(done, index) in dones", :key="index")
+      li {{ done.content }}
+        button(@click="editDone(done)") 編集
+        button(@click="destroyDone(done.id)") 削除
+    button(@click="getDones") Done一覧を取得
+
+Registration(v-else)
 </template>
 
 <script>
@@ -78,6 +80,11 @@ export default {
       this.$axios.$delete(`/api/v1/dones/${id}`).then((res) => {
         this.getDones()
       })
+    },
+
+    logoutUser () {
+      localStorage.removeItem('requestHeader')
+      this.$store.commit('logout')
     }
   }
 }

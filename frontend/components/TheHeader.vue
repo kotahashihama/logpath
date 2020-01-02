@@ -2,7 +2,22 @@
 .header
   .wrapper
     .logo Logpath
+    |  {{ loginState }}
 </template>
+
+<script>
+export default {
+  computed: {
+    loginState () {
+      if (this.$store.state.isLoggedIn) {
+        return 'ログイン中'
+      } else {
+        return 'ログアウト済'
+      }
+    }
+  }
+}
+</script>>
 
 <style lang="stylus" scoped>
 .header

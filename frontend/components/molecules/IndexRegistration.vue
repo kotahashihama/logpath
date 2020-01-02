@@ -1,17 +1,16 @@
 <template lang="pug">
 .index-registration
-  form(@submit.prevent="createUser")
-    input(type="text", placeholder="名前", v-model="newUser.name")
-    input(type="email", placeholder="メールアドレス", v-model="newUser.email")
-    input(type="password", placeholder="パスワード", v-model="newUser.password")
-    button(type="submit") 新規登録
+  .wrapper
+    form(@submit.prevent="createUser")
+      input(type="text", placeholder="名前", v-model="newUser.name")
+      input(type="email", placeholder="メールアドレス", v-model="newUser.email")
+      input(type="password", placeholder="パスワード", v-model="newUser.password")
+      button(type="submit") 新規登録
 
-  form(@submit.prevent="loginUser")
-    input(type="email", placeholder="メールアドレス", v-model="existingUser.email")
-    input(type="password", placeholder="パスワード", v-model="existingUser.password")
-    button(type="submit") ログイン
-
-  button(@click="logoutUser") ログアウト
+    form(@submit.prevent="loginUser")
+      input(type="email", placeholder="メールアドレス", v-model="existingUser.email")
+      input(type="password", placeholder="パスワード", v-model="existingUser.password")
+      button(type="submit") ログイン
 </template>
 
 <script>
@@ -46,10 +45,6 @@ export default {
         localStorage.setItem('requestHeader', JSON.stringify(requestHeaderByResponse))
         this.$store.commit('login')
       })
-    },
-    logoutUser () {
-      localStorage.removeItem('requestHeader')
-      this.$store.commit('logout')
     }
   }
 }
