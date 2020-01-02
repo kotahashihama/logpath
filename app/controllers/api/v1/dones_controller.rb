@@ -2,12 +2,16 @@ class Api::V1::DonesController < ApplicationController
   before_action :authenticate_api_v1_user!
 
   def index
-    @dones = Done.all
+    user = User.find(current_api_v1_user.id)
+    @dones = user.dones.all
     render 'index', formats: :json, handlers: 'jbuilder', layout: false
   end
 
   def create
-    @done = Done.create(content: params[:content])
+    @done = Done.create(
+      content: params[:content],
+      user_id: current_api_v1_user.id
+    )
     render 'show', formats: :json, handlers: 'jbuilder', layout: false
   end
 
